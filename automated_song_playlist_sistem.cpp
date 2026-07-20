@@ -146,9 +146,54 @@ struct SllcPlaylistLagu {
         delete hapus;
         cout << "Playlist berhasil di hapus seluruhnya!" << endl;
     }
+
+    // Fungsi untuk memutar lagu berikutnya
+    void putarlaguberikutnya() {
+
+    }
+
+    // Fungsi untuk memutar lagu
+    void putarlagu() {
+        Node* putar;
+        if(isEmpty() == 1) {
+            cout << "Playlist masih kosong!" << endl;
+        } else {
+            putar = Head;
+            cout << "Lagu yang di putar: " << putar->lagu << endl;
+        }
+    }
 };
 
+void screen() {
+    cout << "---=== AUTOMATED SONG PLAYLIST SISTEM ---===" << endl;
+    cout << "1. Putar lagu" << endl;
+    cout << "2. Tambah playlist awal" << endl;
+    cout << "3. Tambah playlist akhir" << endl;
+    cout << "4. Tampilkan playlist" << endl;
+    cout << "5. Hapus playlist awal" << endl;
+    cout << "6. Hapus playlist akhir" << endl;
+    cout << "7. Keluar" << endl;
+    cout << "Pilih: ";
+}
+
 int main() {
+
+SllcPlaylistLagu sllc;
+
+int pilihan;
+
+while(true) {
+screen();
+cin >> pilihan;
+
+switch(pilihan) {
+    case 1: {
+        sllc.putarlagu();
+        break;
+    }
+}
+}
+
 
     return 0;
 }

@@ -133,18 +133,18 @@ struct SllcPlaylistLagu {
     void clear() {
         Node* hapus, *bantu;
 
-        bantu = Head;
-
-        do {
-            hapus = bantu;
-            bantu = bantu->next;
-            delete hapus;
-        } while(bantu != Tail->next);
-        hapus = Head = Tail;
-        Head = NULL;
-        Tail = NULL;
-        delete hapus;
-        cout << "Playlist berhasil di hapus seluruhnya!" << endl;
+        if(isEmpty() == 0) {
+            bantu = Head;
+            do {
+                hapus = bantu;
+                bantu = bantu->next;
+                delete hapus;
+            } while(bantu != Head);
+            Head = NULL;
+            Tail = NULL;
+            
+            cout << "Playlist berhasil di hapus seluruhnya!" << endl;
+        }
     }
 
     // Fungsi untuk memutar lagu berikutnya

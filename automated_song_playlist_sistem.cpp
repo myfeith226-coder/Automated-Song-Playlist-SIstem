@@ -156,10 +156,13 @@ struct SllcPlaylistLagu {
     void putarlagu() {
         Node* putar;
         if(isEmpty() == 1) {
-            cout << "Playlist masih kosong!" << endl;
+            cout << "Playlist masih kosong! silahkan menambah daftar playlist terlebih dahulu." << endl;
         } else {
             putar = Head;
-            cout << "Lagu yang di putar: " << putar->lagu << endl;
+            do {
+                cout << "Lagu yang di putar: " << putar->lagu << endl;
+                putar = putar->next;
+            } while(putar != Tail->next);
         }
     }
 };

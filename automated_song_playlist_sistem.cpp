@@ -172,7 +172,8 @@ void screen() {
     cout << "4. Tampilkan playlist" << endl;
     cout << "5. Hapus playlist awal" << endl;
     cout << "6. Hapus playlist akhir" << endl;
-    cout << "7. Keluar" << endl;
+    cout << "7. Hapus semua playlist" << endl;
+    cout << "8. Keluar" << endl;
     cout << "Pilih: ";
 }
 
@@ -181,6 +182,7 @@ int main() {
 SllcPlaylistLagu sllc;
 
 int pilihan;
+string lagu;
 
 while(true) {
 screen();
@@ -191,6 +193,45 @@ switch(pilihan) {
         sllc.putarlagu();
         break;
     }
+    case 2: {
+        cout << "Masukkan nama lagu: ";
+        cin.clear();
+        cin.ignore();
+        getline(cin, lagu);
+        sllc.insertlaguawal(lagu);
+        break;
+    }
+    case 3: {
+        cout << "Masukkan nama lagu: ";
+        cin.clear();
+        cin.ignore();
+        getline(cin, lagu);
+        sllc.insertlaguakhir(lagu);
+        break;
+    }
+    case 4: {
+        sllc.tampil();
+        break;
+    }
+    case 5: {
+        sllc.hapusawal();
+        break;
+    }
+    case 6: {
+        sllc.hapusakhir();
+        break;
+    }
+    case 7: {
+        sllc.clear();
+        break;
+    }
+    case 8: {
+        cout << "Terima kasih, semoga hari anda menyenangkan!" << endl;
+        return 0;
+    }
+    default :
+    cout << "Error: input anda tidak valid!" << endl;
+
 }
 }
 

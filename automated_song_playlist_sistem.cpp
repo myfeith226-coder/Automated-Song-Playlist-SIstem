@@ -2,13 +2,13 @@
 
 using namespace std;
 
-struct Node {
+struct Node { // Node Single linkedlist Circular untuk wadah data lagu
     string lagu;
     Node* next;
 };
 
-struct SllcPlaylistLagu {
-    Node* Head = NULL, *Tail = NULL;
+struct SllcPlaylistLagu { // Penerapan Single Linkedlist Circular dengan struct untuk logika sistem playlist otomatis
+    Node* Head = NULL, *Tail = NULL, *current = NULL;
 
     // Fungsi untuk mengetahui kosong tidaknya suatu playlist musik
     int isEmpty() { 
@@ -30,6 +30,7 @@ struct SllcPlaylistLagu {
         if(isEmpty() == 1) {
             Head = baru;
             Tail = baru;
+            current = baru;
             Head->next = Head;
             Tail->next = Tail;
         } else {
@@ -51,6 +52,7 @@ struct SllcPlaylistLagu {
         if(isEmpty() == 1) {
             Head = baru;
             Tail = baru;
+            current = baru;
             Head->next = Head;
             Tail->next = Tail;
         } else {
@@ -65,15 +67,20 @@ struct SllcPlaylistLagu {
     void tampil() {
         Node* bantu;
 
-        if(isEmpty() == 0) {
-            bantu = Head;
-            do {
-                cout << bantu->lagu << " ";
-                bantu = bantu->next;
-            } while(bantu != Tail->next);
-            cout << endl;
-        } else {
+        if(isEmpty() == 1) {
             cout << "Playlist masih kosong!" << endl;
+        } else {
+            bantu = Head;
+            cout << "\n--- DAFTAR PLAYLIST ---" << endl;
+            do {
+                if(bantu == current) {
+                    cout << "-> " << bantu->lagu << " (Sedang di putar)" << endl;
+                } else {
+                    cout << "   " << bantu->lagu << endl;
+                }
+                bantu = bantu->next;
+            } while(bantu != Head);
+            cout << "-------------------------" << endl;
         }
     }
 

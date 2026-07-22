@@ -152,22 +152,22 @@ struct SllcPlaylistLagu { // Penerapan Single Linkedlist Circular dengan struct 
         }
     }
 
-    // Fungsi untuk memutar lagu berikutnya
+    // PENGEMBANGAN: Fungsi untuk memutar lagu berikutnya (Next Track)
     void putarlaguberikutnya() {
-
+        if(isEmpty() == 1) {
+            cout << "Playlist masih kosong!" << endl;
+        } else {
+            current = current->next;
+            cout << "\n⏭️ Beralih ke lagu berikutnya: " << current->lagu << endl;
+        }
     }
 
-    // Fungsi untuk memutar lagu
+    // PENGEMBANGAN: Fungsi untuk memutar lagu saat ini
     void putarlagu() {
-        Node* putar;
         if(isEmpty() == 1) {
-            cout << "Playlist masih kosong! silahkan menambah daftar playlist terlebih dahulu." << endl;
+            cout << "Playlist masih kosong!" << endl;
         } else {
-            putar = Head;
-            do {
-                cout << "Lagu yang di putar: " << putar->lagu << endl;
-                putar = putar->next;
-            } while(putar != Tail->next);
+            cout << "\n▶️ Memutar lagu: " << current->lagu << endl;
         }
     }
 };

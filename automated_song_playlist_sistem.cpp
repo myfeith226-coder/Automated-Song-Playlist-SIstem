@@ -86,22 +86,20 @@ struct SllcPlaylistLagu { // Penerapan Single Linkedlist Circular dengan struct 
 
     // Menghapus playlist awal
     void hapusawal() {
-        Node* hapus, *bantu;
+        Node* hapus;
 
         if(isEmpty() == 0) {
             hapus = Head;
             if(Head != Tail) {
-                bantu = Head;
-                while(bantu->next != Head) {
-                    bantu = bantu->next;
-                }
                 Head = Head->next;
                 Tail->next = Head;
+                if(current == hapus) current = Head;
                 delete hapus;
             } else {
-                hapus = Head = Tail;
+                hapus = Head = Tail = current;
                 Head = NULL;
                 Tail = NULL;
+                current = NULL;
                 delete hapus;
             }
             cout << "Playlist awal berhasil di hapus!" << endl;
